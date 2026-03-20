@@ -12,7 +12,11 @@ class ExploreScreen extends StatelessWidget {
     final favProvider = context.watch<CharacterProvider>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Explorar Personajes")),
+      backgroundColor: const Color(0xFFF3F6FB),
+      appBar: AppBar(
+        title: const Text("Explorar Personajes"),
+        backgroundColor: const Color(0xFF1F4D8F),
+      ),
 
       body: FutureBuilder<List<Character>>(
         future: ApiService().getCharacters(),
