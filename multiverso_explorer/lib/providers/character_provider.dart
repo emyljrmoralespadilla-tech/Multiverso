@@ -5,6 +5,10 @@ class CharacterProvider extends ChangeNotifier {
 
   List<int> favourites = [];
 
+  CharacterProvider() {
+    loadFavourites();
+  }
+
   void toggleFavourite(int id) async {
 
     if (favourites.contains(id)) {
