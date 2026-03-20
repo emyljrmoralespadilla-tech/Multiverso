@@ -32,14 +32,20 @@ class ExploreScreen extends StatelessWidget {
               final isFav = favProvider.isFavourite(c.id);
 
               return ListTile(
-                leading: Image.network(c.image),
-                title: Text(c.name),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(c.image),
+                  radius: 28,
+                ),
+                title: Text(
+                  c.name,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
                 subtitle: Text(c.status),
                 trailing: IconButton(
-                  icon: Icon(
-                    isFav ? Icons.favorite : Icons.favorite_border,
-                    color: isFav ? Colors.red : null,
-                  ),
+                  iconSize: 34,
+                  color: isFav ? Colors.redAccent : Colors.grey[700],
+                  icon: Icon(isFav ? Icons.favorite : Icons.favorite_border),
+                  splashRadius: 28,
                   onPressed: () => favProvider.toggleFavourite(c.id),
                 ),
               );

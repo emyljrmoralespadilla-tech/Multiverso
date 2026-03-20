@@ -40,11 +40,20 @@ class FavouritesScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final char = favourites[index];
               return ListTile(
-                leading: Image.network(char.image),
-                title: Text(char.name),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(char.image),
+                  radius: 28,
+                ),
+                title: Text(
+                  char.name,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
                 subtitle: Text(char.status),
                 trailing: IconButton(
-                  icon: const Icon(Icons.delete, color: Colors.red),
+                  iconSize: 32,
+                  color: Colors.redAccent,
+                  splashRadius: 28,
+                  icon: const Icon(Icons.delete_forever),
                   onPressed: () {
                     favProvider.toggleFavourite(char.id);
                   },
