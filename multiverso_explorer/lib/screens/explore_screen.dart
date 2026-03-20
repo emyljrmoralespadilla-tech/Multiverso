@@ -35,22 +35,34 @@ class ExploreScreen extends StatelessWidget {
               final c = characters[index];
               final isFav = favProvider.isFavourite(c.id);
 
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(c.image),
-                  radius: 28,
+              return Card(
+                color: Colors.white,
+                elevation: 4,
+                margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
                 ),
-                title: Text(
-                  c.name,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(c.status),
-                trailing: IconButton(
-                  iconSize: 34,
-                  color: isFav ? Colors.redAccent : Colors.grey[700],
-                  icon: Icon(isFav ? Icons.favorite : Icons.favorite_border),
-                  splashRadius: 28,
-                  onPressed: () => favProvider.toggleFavourite(c.id),
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(c.image),
+                    radius: 28,
+                  ),
+                  title: Text(
+                    c.name,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(c.status),
+                  trailing: IconButton(
+                    iconSize: 34,
+                    color: isFav ? Colors.redAccent : Colors.grey[700],
+                    icon: Icon(isFav ? Icons.favorite : Icons.favorite_border),
+                    splashRadius: 28,
+                    onPressed: () => favProvider.toggleFavourite(c.id),
+                  ),
                 ),
               );
             },

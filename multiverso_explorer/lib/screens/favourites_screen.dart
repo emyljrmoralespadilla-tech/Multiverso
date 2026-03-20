@@ -43,24 +43,36 @@ class FavouritesScreen extends StatelessWidget {
             itemCount: favourites.length,
             itemBuilder: (context, index) {
               final char = favourites[index];
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(char.image),
-                  radius: 28,
+              return Card(
+                color: Colors.white,
+                elevation: 4,
+                margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
                 ),
-                title: Text(
-                  char.name,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(char.status),
-                trailing: IconButton(
-                  iconSize: 32,
-                  color: Colors.redAccent,
-                  splashRadius: 28,
-                  icon: const Icon(Icons.delete_forever),
-                  onPressed: () {
-                    favProvider.toggleFavourite(char.id);
-                  },
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(char.image),
+                    radius: 28,
+                  ),
+                  title: Text(
+                    char.name,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(char.status),
+                  trailing: IconButton(
+                    iconSize: 32,
+                    color: Colors.redAccent,
+                    splashRadius: 28,
+                    icon: const Icon(Icons.delete_forever),
+                    onPressed: () {
+                      favProvider.toggleFavourite(char.id);
+                    },
+                  ),
                 ),
               );
             },
